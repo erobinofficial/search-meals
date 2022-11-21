@@ -38,7 +38,7 @@ const displayMealDetails = meal => {
   const div = document.createElement('div');
   div.classList.add('card');
   div.innerHTML = `
-          <div class="row g-0 border-0 shadow">
+          <div class="row g-0 border-0 shadow rounded-2">
             <div class="col-md-4">
               <img src="${meal.strMealThumb}" class="img-fluid rounded-start" alt="...">
             </div>
@@ -46,7 +46,7 @@ const displayMealDetails = meal => {
                   <div class="card-body">
                     <h5 class="card-title">${meal.strMeal}</h5>
                     <p class="card-text">${meal.strInstructions}</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <a href="${meal.strYoutube}" class="btn btn-primary">See Tutorial</a>
                   </div>
                 </div>
            </div>
