@@ -46,7 +46,7 @@ const displayMealDetails = meal => {
                   <div class="card-body">
                     <h5 class="card-title">${meal.strMeal}</h5>
                     <p class="card-text">${meal.strInstructions}</p>
-                    <a href="${meal.strYoutube}" class="btn btn-primary">See Tutorial</a>
+                    <a href="${meal.strYoutube}" class="btn btn-primary">Video Tutorial</a>
                   </div>
                 </div>
            </div>
