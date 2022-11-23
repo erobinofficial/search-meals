@@ -1,15 +1,24 @@
 const searchFood = () => {
   const searchBox = document.getElementById('search-field');
   const searchText = searchBox.value;
-  const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
+  if(searchText == ''){
+    alert("filled out form");
+  }
+  else{
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
   searchBox.value = '';
   fetch(url)
     .then(response => response.json())
     .then(data => displayMeals(data.meals));
+  }
+  
 }
 
 const displayMeals = meals => {
   const searchResults = document.getElementById('search-results');
+  searchResults.textContent = '';
+  console.log(meals.length);
+  
   meals.forEach(meal => {
     // console.log(meal);
     const div = document.createElement('div');
@@ -35,6 +44,7 @@ const loadMealDetail = mealDetail => {
 const displayMealDetails = meal => {
   console.log(meal);
   const mealDetails = document.getElementById('meal-details');
+  mealDetails.textContent = '';
   const div = document.createElement('div');
   div.classList.add('card');
   div.innerHTML = `
