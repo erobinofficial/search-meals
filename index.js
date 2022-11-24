@@ -17,23 +17,29 @@ const searchFood = () => {
 const displayMeals = meals => {
   const searchResults = document.getElementById('search-results');
   searchResults.textContent = '';
-  console.log(meals.length);
+  // console.log(meals.length);
+  if(meals?.length == 0){
+    searchResults.textContent = 'No meals found';
+    return false;
+  }
   
-  meals.forEach(meal => {
-    // console.log(meal);
-    const div = document.createElement('div');
-    div.classList.add('col');
-    div.innerHTML = `
-      <div onclick="loadMealDetail(${meal.idMeal})" class="card h-80 border-0 shadow rounded-2">
-        <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${meal.strMeal}</h5>
-          <p class="card-text">${meal.strInstructions.slice(0, 150)}</p>
+  else{
+    meals.forEach(meal => {
+      // console.log(meal);
+      const div = document.createElement('div');
+      div.classList.add('col');
+      div.innerHTML = `
+        <div onclick="loadMealDetail(${meal.idMeal})" class="card h-80 border-0 shadow rounded-2">
+          <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${meal.strMeal}</h5>
+            <p class="card-text">${meal.strInstructions.slice(0, 150)}</p>
+          </div>
         </div>
-      </div>
-    `;
-    searchResults.appendChild(div);
-  })
+      `;
+      searchResults.appendChild(div);
+    })
+  }
 }
 const loadMealDetail = mealDetail => {
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealDetail}`;
