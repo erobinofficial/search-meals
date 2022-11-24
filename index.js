@@ -17,7 +17,7 @@ const searchFood = () => {
 const displayMeals = meals => {
   const searchResults = document.getElementById('search-results');
   searchResults.textContent = '';
-  // console.log(meals.length);
+  console.log(meals.length);
   if(meals?.length == 0){
     searchResults.textContent = 'No meals found';
     return false;
