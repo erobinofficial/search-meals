@@ -17,7 +17,6 @@ const searchFood = () => {
   const displayMeals = meals => {
     const searchResults = document.getElementById('search-results');
     searchResults.textContent = '';
-    // console.log(meals.length);
     if(meals == null || meals == undefined || meals == ''){
       const div = document.createElement('div');
       div.innerHTML = `<h4>No results Found</h4>`;
