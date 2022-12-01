@@ -11,7 +11,7 @@ const searchFood = () => {
       .then(response => response.json())
       .then(data => displayMeals(data.meals));
     }
-    // async awaiting the user to click on the search box
+    // async awaiting the user to click on the search box...here some code
   }
   
   const displayMeals = meals => {
