@@ -1,10 +1,29 @@
 #include<stdio.h>
 int main(){
-    int x = 6;
-    int y = 7;
-    int temp;
-    temp = x;
-    x = y;
-    y = temp;
-    printf("%d %d", x, y);
+    int x, vag;
+    scanf("%d",&x);
+    vag = x/5;
+    switch (vag){
+        case 19:
+            printf("A+");
+            break;
+        case 18:
+            printf("A+");
+            break;
+        case 17:
+            printf("A");
+            break;
+        case 16:
+            printf("A-");
+            break;
+        case 15:
+            printf("B+");
+            break;
+        case 14:
+            printf("B");
+            break;
+        default:
+            printf("F");
+            break;
+    }
 }
