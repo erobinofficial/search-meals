@@ -1,3 +1,4 @@
+// Search box
 const searchFood = () => {
   const searchBox = document.getElementById('search-field');
   const searchText = searchBox.value;
@@ -13,6 +14,7 @@ const searchFood = () => {
   }
   
 }
+// Display meals
 
 const displayMeals = meals => {
   const searchResults = document.getElementById('search-results');
@@ -42,6 +44,8 @@ const displayMeals = meals => {
     })
   }
 }
+// Meal Detail
+
 const loadMealDetail = mealDetail => {
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealDetail}`;
   fetch(url)
@@ -79,7 +83,7 @@ const displayMealDetails = meal => {
 
 
 
-
+// "Enter" Click reaction
 const input = document.getElementById("search-field");
 input.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
