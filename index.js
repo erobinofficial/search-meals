@@ -1,34 +1,41 @@
 const searchFood = () => {
   const searchBox = document.getElementById('search-field');
   const searchText = searchBox.value;
-  if(searchText == ''){
+  if (searchText == '') {
     alert("filled out form");
   }
-  else{
+  else {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
-  searchBox.value = '';
-  fetch(url)
-    .then(response => response.json())
-    .then(data => displayMeals(data.meals));
+    searchBox.value = '';
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+      //   if (data.meals == null || data.meals == undefined || data.meals == '') {
+      //     alert("No result found");
+      //     displayMeals([]);
+      //   }
+      //   else {
+      //     displayMeals(data.meals);
+      //   }
+      displayMeals(data.meals);
+      });
   }
-  
 }
 
 const displayMeals = meals => {
   const searchResults = document.getElementById('search-results');
   searchResults.textContent = '';
-  // console.log(meals.length);
-  if(meals?.length == 0){
-    searchResults.textContent = 'No meals found';
-    return false;
+  console.log(meals == null);
+  if (meals == null) {
+    alert("No result found");
+    return displayMeals([]);
+
   }
-  
-  else{
-    meals.forEach(meal => {
-      // console.log(meal);
-      const div = document.createElement('div');
-      div.classList.add('col');
-      div.innerHTML = `
+  meals.forEach(meal => {
+    // console.log(meal);
+    const div = document.createElement('div');
+    div.classList.add('col');
+    div.innerHTML = `
         <div onclick="loadMealDetail(${meal.idMeal})" class="card h-80 border-0 shadow rounded-2">
           <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
           <div class="card-body">
@@ -37,9 +44,8 @@ const displayMeals = meals => {
           </div>
         </div>
       `;
-      searchResults.appendChild(div);
-    })
-  }
+    searchResults.appendChild(div);
+  })
 }
 const loadMealDetail = mealDetail => {
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealDetail}`;
@@ -48,7 +54,7 @@ const loadMealDetail = mealDetail => {
     .then(data => displayMealDetails(data.meals[0]));
 };
 const displayMealDetails = meal => {
-  console.log(meal);
+  // console.log(meal);
   const mealDetails = document.getElementById('meal-details');
   mealDetails.textContent = '';
   const div = document.createElement('div');
