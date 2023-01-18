@@ -12,14 +12,12 @@ const searchFood = () => {
     .then(response => response.json())
     .then(data => displayMeals(data.meals));
   }
-  
 }
 // Display meals
-
 const displayMeals = meals => {
+  console.log(meals);
   const searchResults = document.getElementById('search-results');
   searchResults.textContent = '';
-  // console.log(meals.length);
   if(meals == null || meals == undefined || meals == ''){
     const div = document.createElement('div');
     div.innerHTML = `<h4>No results Found</h4>`;
@@ -28,7 +26,6 @@ const displayMeals = meals => {
   
   else{
     meals.forEach(meal => {
-      // console.log(meal);
       const div = document.createElement('div');
       div.classList.add('col');
       div.innerHTML = `
@@ -53,7 +50,6 @@ const loadMealDetail = mealDetail => {
     .then(data => displayMealDetails(data.meals[0]));
 };
 const displayMealDetails = meal => {
-  console.log(meal);
   const mealDetails = document.getElementById('meal-details');
   mealDetails.textContent = '';
   const div = document.createElement('div');
